@@ -1,0 +1,14 @@
+<h1>Characters</h1>
+
+<% if @characters.any? %>
+  <ul>
+    <% @characters.each do |character| %>
+      <li><%= link_to character.name, character_path(character) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no characters yet.</p>
+<% end %>
+
+
+<p><%= link_to "Create new character", new_character_path %></p>
