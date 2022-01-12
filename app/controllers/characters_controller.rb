@@ -26,11 +26,10 @@ end
     @user = current_user
     @character = @user.characters.new(character_params)
     if @character.save
-      p "Character successfully added!"
-      # redirect_to characters_path
+      flash[:notice] = "You have successfully created a character!"
       redirect_to user_characters_path(@user)
     else
-      p "There was an error in creating your character!"
+      flash[:alert] = "There was an error in creating your character!"
       render :new
     end
   end
@@ -51,16 +50,19 @@ end
     @user = current_user
     @character = Character.find(params[:id])
     if @character.update(character_params)
+      flash[:notice] = "You have successfully updated a character!"
       redirect_to user_characters_path(@user)
     else
+      flash[:alert] = "There was an error in updated your character!"
       render :edit
     end
   end
 
   def destroy
+    @user = current_user
     @character = Character.find(params[:id])
     @character.destroy
-    redirect_to characters_path
+    redirect_to user_characters_path(@user)
   end
 
   private

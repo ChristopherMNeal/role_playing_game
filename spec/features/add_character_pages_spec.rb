@@ -18,4 +18,13 @@ describe "adding a user, then a character" do
     click_on 'Create Character'
     expect(page).to have_content 'Herbert'
   end
+
+  it "adds a new character" do
+    click_link 'Create new character'
+    fill_in 'Name', :with => ''
+    fill_in 'Role', :with => ''
+    click_on 'Create Character'
+    expect(page).to have_content 'There was an error in creating your character!'
+  end
 end
+
