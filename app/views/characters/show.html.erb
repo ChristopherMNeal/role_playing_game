@@ -7,11 +7,15 @@
 <h4>Character Health:</h4>
 <p><%= @character.health %></p>
 
+<% if @character.avatar_photo.attached? %>
+  <%= image_tag(@character.avatar_photo, {:style => "width:300px;"}) %>
+<% end %>
+
 
 <p><%= link_to "Edit character", edit_user_character_path(@user, @character) %></p>
 <p><%= link_to "Delete character", user_character_path(@user, @character),
   :data => {:confirm => "are you sure?",
   :method => "delete"} %></p>
 
-<p><%= link_to "Return to user", user_path(@user) %></p>
+<p><%= link_to "Return to user", user_characters_path(@user) %></p>
 

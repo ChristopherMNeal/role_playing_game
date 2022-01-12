@@ -4,6 +4,7 @@ before_action :only => [:edit] do
   redirect_to new_user_session_path unless current_user && current_user.admin
 end
 
+
   def index
     # @user = User.find(params[:user_id])
     if current_user.admin
@@ -25,6 +26,7 @@ end
   def create
     @user = current_user
     @character = @user.characters.new(character_params)
+    @character.avatar_photo.attach(params[:character][:avatar_photo])
     if @character.save
       flash[:notice] = "You have successfully created a character!"
       redirect_to user_characters_path(@user)
