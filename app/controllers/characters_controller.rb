@@ -1,17 +1,20 @@
 class CharactersController < ApplicationController
 
   def index
+    @user = User.find(params[:user_id])
     @characters = Character.all
     render :index
   end
 
   def new
-    @character = Character.new
+    @user = User.find(params[:user_id])
+    @character = @user.characters.new
     render :new
   end
 
   def create
-    @character = Character.new(character_params)
+    @user = User.find(params[:user_id])
+    @character = @user.characters.new(character_params)
     if @character.save
       redirect_to characters_path
     else
@@ -20,17 +23,19 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
     @character = Character.find(params[:id])
     render :edit
   end
 
   def show
+    @user = User.find(params[:user_id])
     @character = Character.find(params[:id])
     render :show
   end
 
   def update
-    @character= Character.find(params[:id])
+    @character = Character.find(params[:id])
     if @character.update(character_params)
       redirect_to characters_path
     else

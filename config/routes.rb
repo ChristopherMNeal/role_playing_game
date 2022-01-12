@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'characters#index'
-  resources :characters do
-    resources :inventories
+  root to: 'welcome#index'
+  resources :users do
+    resources :characters do
+      resources :inventories
+    end
   end
 end
