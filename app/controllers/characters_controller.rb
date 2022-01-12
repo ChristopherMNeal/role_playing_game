@@ -1,5 +1,9 @@
 class CharactersController < ApplicationController
 include Devise::Controllers::Helpers # helper method to include devise controllers
+before_action :only => [:edit] do
+  redirect_to new_user_session_path unless current_user && current_user.admin
+end
+
   def index
     # @user = User.find(params[:user_id])
     if current_user.admin
@@ -32,21 +36,22 @@ include Devise::Controllers::Helpers # helper method to include devise controlle
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = current_user
     @character = Character.find(params[:id])
     render :edit
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = current_user
     @character = Character.find(params[:id])
     render :show
   end
 
   def update
+    @user = current_user
     @character = Character.find(params[:id])
     if @character.update(character_params)
-      redirect_to characters_path
+      redirect_to user_characters_path(@user)
     else
       render :edit
     end

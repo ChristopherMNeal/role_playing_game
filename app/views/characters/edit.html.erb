@@ -1,0 +1,13 @@
+<h1>Edit character</h1>
+
+<%= form_for [@user, @character] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+    <%= f.label :health %>
+    <%= f.text_field :health %>
+    <%= f.submit  %>
+
+  <% end %>
+
