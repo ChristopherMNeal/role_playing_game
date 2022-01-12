@@ -1,23 +1,27 @@
 class CharactersController < ApplicationController
-
+include Devise::Controllers::Helpers # helper method to include devise controllers
   def index
-    @user = User.find(params[:user_id])
-    @characters = Character.all
+    @user = current_user
+    # @user = User.find(params[:user_id])
+    @characters = @user.characters
     render :index
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @character = @user.characters.new
     render :new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @character = @user.characters.new(character_params)
     if @character.save
-      redirect_to characters_path
+      p "Character successfully added!"
+      # redirect_to characters_path
+      redirect_to user_characters_path(@user)
     else
+      p "There was an error in creating your character!"
       render :new
     end
   end

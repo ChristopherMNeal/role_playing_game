@@ -3,7 +3,7 @@
 <% if @user %>
   <ul>
     <% @characters.each do |character| %>
-      <li><%= link_to character.name, character_path(character) %></li>
+      <li><%= link_to character.name, user_character_path(@user.id, character.id) %></li>
     <% end %>
   </ul>
 <% else %>
