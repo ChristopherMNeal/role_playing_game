@@ -1,9 +1,14 @@
 class CharactersController < ApplicationController
 include Devise::Controllers::Helpers # helper method to include devise controllers
   def index
-    @user = current_user
     # @user = User.find(params[:user_id])
-    @characters = @user.characters
+    if current_user.admin
+      @user = current_user
+      @characters = Character.all
+    else
+      @user = current_user
+      @characters = @user.characters
+    end
     render :index
   end
 
