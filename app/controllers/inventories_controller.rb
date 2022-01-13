@@ -15,7 +15,7 @@ def create
     flash[:notice] = "You have successfully added an item!"
     redirect_to user_character_path(@user, @character)
   else
-    flash[:alert] = "There was an error updating your item!"
+    flash[:alert] = "There was an error adding your item!"
     render :new
   end
 end
