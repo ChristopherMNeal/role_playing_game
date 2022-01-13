@@ -1,0 +1,10 @@
+<h1>New item</h1>
+
+<%= form_for [@user, @character, @inventory] do |f| %>
+    <%= f.label :item %>
+    <%= f.text_field :item %>
+    <%= f.hidden_field :quantity, value: 1 %>
+    <%= f.submit  %>
+
+  <% end %>
+

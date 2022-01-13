@@ -1,0 +1,12 @@
+<h1>Item: <%= @inventory.item %></h1>
+
+<h3>You have <%= @inventory.quantity %></h3>
+<p><%= @inventory.item %></p>
+
+<p><%= link_to "Edit item", edit_user_character_inventory_path(@user, @character) %></p>
+<p><%= link_to "Delete item", user_character_inventory_path(@user, @character),
+  :data => {:confirm => "are you sure?",
+  :method => "delete"} %></p>
+
+<p><%= link_to "Return to character", user_character_path(@user, @character) %></p>
+
