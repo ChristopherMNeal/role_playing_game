@@ -1,6 +1,6 @@
 # _Role Playing Game_
 
-#### _Ruby week 4 practice project for Rails with Active Record lesson at Epicodus Bootcamp_
+#### _Ruby week 5 practice project for Rails with Authentication lesson at Epicodus Bootcamp_
 
 #### Created By: **Christopher Neal & Frank Proulx**
 
@@ -26,13 +26,7 @@
 
 ## Description
 
-_This project was created for Epicodus bootcamp to show proficiency in Rails with Active Record. The application is for a specialty foods company to organize products and reviews._ 
-_All users can create an account, log in, browse products, and add reviews._
-_Additionally, admins have full CRUD functionality for products and reviews._
-
-## Database Schema
-
-![image_of_database_schema](./public/role_playing_game_db_schema.png)
+_This project was created for Epicodus bootcamp to show proficiency in Rails with Active Record._
 
 ## System Requirements
 
